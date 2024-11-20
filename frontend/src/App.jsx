@@ -4,10 +4,11 @@ import SignUp from './pages/signup/SignUp'
 import './App.css'
 import {Toaster} from 'react-hot-toast'
 import Home from './pages/home/Home'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { useAuthContext } from './context/AuthContext'
 
 function App() {
-
+  const { authUser } = useAuthContext()
 
   return (
     <>
@@ -16,7 +17,7 @@ function App() {
       {/* <Route path="/" element={<Home />} /> */}
       
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
+      <Route path="/signup" element={authUser? <Navigate to='/' /> : <SignUp />} />
     </Routes>
     <Toaster />
     </div>
