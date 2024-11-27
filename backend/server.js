@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 5000;
 
 dotenv.config();
 
+const __dirname = path.resolve();
+
 app.use(express.json()); // Middleware to parse JSON request bodies(to parse the incoming requests with JSON payloads (from req.body))
 app.use(cookieParser()); // Middleware to parse cookies
 
